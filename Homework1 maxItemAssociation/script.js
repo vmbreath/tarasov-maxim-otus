@@ -31,7 +31,7 @@ function allItemAssociation(arrList,historyOfShoppingArray) {
     });
     return result;
 }
-//Функция maxItemAssociation принимает массив массив с покупками пользователей и возвращает максимальную группу рекомендаций
+//Функция maxItemAssociation принимает массив массив с покупками пользователей и возвращает максимальную группу рекомендаций.
 function maxItemAssociation(arr){
     let finalArr=arr[0];
     allItemAssociation(findItemList(arr),arr).forEach((elem)=>{
