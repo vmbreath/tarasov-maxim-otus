@@ -2,10 +2,10 @@ const historyOfShopping=[["a", "b"], ["a", "c"], ["d", "e"]]; //исходный
 
 
 //Функция findItemList принимает массив с покупками пользователей и возвращает все типы покупок,попадающиеся в массиве
-    function findItemList(arr) {
+    const findItemList=(arr)=> {
     let temp=[arr[0][0]];
-    arr.forEach((person)=>{
-        person.forEach((item)=>{
+    arr.forEach(person=>{
+        person.forEach(item=>{
             if(temp.indexOf(item)<0){
                 temp.push(item);
             }
@@ -15,8 +15,8 @@ const historyOfShopping=[["a", "b"], ["a", "c"], ["d", "e"]]; //исходный
 }
 //Функция allItemAssociation принмает массив типов покупок и массив с покупками пользователей.
 //Перебирает все типы покупок и формирует к каждому типу покупок группы рекомендаций
-function allItemAssociation(arrList,historyOfShoppingArray) {
-    let result=arrList.map((item)=>{
+const allItemAssociation = (arrList,historyOfShoppingArray) => {
+    return arrList.map((item)=>{
         let itemAssociation=[];
         historyOfShoppingArray.forEach((person)=>{
             if (person.indexOf(item)>=0){
@@ -29,10 +29,10 @@ function allItemAssociation(arrList,historyOfShoppingArray) {
         });
         return itemAssociation;
     });
-    return result;
+
 }
 //Функция maxItemAssociation принимает массив массив с покупками пользователей и возвращает максимальную группу рекомендаций.
-function maxItemAssociation(arr){
+const maxItemAssociation = (arr)=>{
     let finalArr=arr[0];
     allItemAssociation(findItemList(arr),arr).forEach((elem)=>{
         if (finalArr.length<elem.length){
