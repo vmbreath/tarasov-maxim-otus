@@ -8,11 +8,11 @@ var a =
     '<article>Article</article>' +
     '</div>' +
     '<input type="radio" name="test" id="751" checked>' +
-    '<p class="paragraph">Paragraph</p>' +
-    '<p class="paragraph1">Paragraph</p>' +
+    '<p class="paragraph">Paragraph1</p>' +
+    '<p class="paragraph1">Paragraph2</p>' +
     '<div>'+
-    '<p class="paragraph2">Paragraph</p>'+
-    '<p class="paragraph3">Paragraph</p>'+
+    '<p class="paragraph2">Paragraph3</p>'+
+    '<p class="paragraph3">Paragraph4</p>'+
     '</div>'+
     '</div></div>'+
     '</body>';

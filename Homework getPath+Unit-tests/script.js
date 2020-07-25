@@ -1,4 +1,4 @@
-//Функция возвращает путь в консоли браузера (getPath($0))
+//Функция возвращает путь в консоли браузера (getPath($0)
 const getPath = (selector) => {
     let pathArr = [];
     if (selector.tagName === 'BODY') {
