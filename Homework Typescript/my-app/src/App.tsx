@@ -1,33 +1,33 @@
 import React from 'react';
 import './App.scss';
-import './script';
 import getPath from './getpath'
 import IElement from "./IElement";
 
+//Интерфейс для создания класса IHtmlElement
 interface IHtmlElement {
     doElement(): object,
-
     element: object
 }
 
+//Класс htmlElements для возвращения нужного html элемента
 class htmlElements implements IHtmlElement {
     constructor(element: object) {
         this.element = element;
     }
-
     element: object;
-
     doElement(): object {
         return this.element
     }
 }
 
+//Создаю типы элементов для html элементов
 enum elementType {
     textarea,
     button,
     input,
 }
 
+//Создаю функцию, которая в зависимости от выбранного elementType возвращает необходимый html элемент
 function getElementByType(type: elementType): IHtmlElement {
     const elementButton = <button key='button1'>BUTTON!</button>;
     const elementTextArea = <textarea name="description" value="TEXTAREA." key='textarea1'>TEXTAREA</textarea>;
@@ -43,10 +43,12 @@ function getElementByType(type: elementType): IHtmlElement {
     throw new Error("Shouldn't be reachable");
 }
 
+//Создаю элементы
 const elemButton: IHtmlElement = getElementByType(elementType.button);
 const elemTextArea: IHtmlElement = getElementByType(elementType.textarea);
 const elemInput: IHtmlElement = getElementByType(elementType.input);
 
+//Класс App, который рендерит страничку, запускает функцию getPath и рендерит элемент html в зависимости от выбора
 class App extends React.Component {
     state = {
         currentPath: 'undefined',
@@ -112,9 +114,7 @@ class App extends React.Component {
                     <div onClick={this.handleClick}>Путь к данному элементу:</div>
                     <a className={'outputPath'}>{this.state.currentPath}</a>
                 </div>
-
             </div>
-
         );
     }
 }

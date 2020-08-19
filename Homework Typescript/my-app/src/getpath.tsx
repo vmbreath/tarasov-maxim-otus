@@ -1,6 +1,6 @@
 import IElement from "./IElement";
-//Функция возвращает путь в консоли браузера getPath($0)
 
+//Функция возвращает путь к элементу на странице
 const getPath = (selector: IElement): string | null => {
 
     let pathArr: Array<string> = [];
