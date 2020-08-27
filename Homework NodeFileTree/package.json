@@ -1,0 +1,9 @@
+{
+  "name": "nodefiletree",
+  "version": "1.0.0",
+  "dependencies": {
+  },
+  "scripts": {
+    "tree": "node ./script.js"
+  }
+}

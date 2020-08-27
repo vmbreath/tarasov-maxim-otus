@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  flex-direction: column;
+  background-image: linear-gradient(yellow, white);
+
+  .pClass {
+    border-radius: 20%;
+    border-color: #ff3e00;
+    border-style: solid;
+    width: auto;
+    padding: 5px;
+    background-color: palegreen;
+  }
+
+  .form {
+    border-color: darkgoldenrod;
+    border-style: solid;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  p:active {
+    background: blue;
+  }
+
+  div:active {
+    background: green;
+  }
+
+  .outputPath:active {
+    background: yellow;
+  }
+
+  article:active {
+    background: indianred;
+  }
+}
+
+p {
+  border-radius: 20%;
+  border-color: #ff3e00;
+  border-style: solid;
+  width: 100px;
+}
+
+.outputPath {
+  border-radius: 64px 64px 64px 64px;
+  -moz-border-radius: 64px 64px 64px 64px;
+  -webkit-border-radius: 64px 64px 64px 64px;
+  border: 4px solid #ad10ad;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+form {
+  border-color: darkgoldenrod;
+  border-style: solid;
+  padding: 11px;
+  display: flex;
+  flex-direction: column;
+}
