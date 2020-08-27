@@ -7,4 +7,4 @@
 npm run tree -- 'C:/Program Files (x86)/'
 npm run tree -- C:/files/
 
-###If you have parentheses in the path you must type quotes around the path!
+### If you have parentheses in the path you must type quotes around the path!
