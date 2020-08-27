@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.scss';
 import getPath from './getpath'
-import IElement from "./IElement";
 
 //Интерфейс для создания класса IHtmlElement
 interface IHtmlElement {
@@ -14,7 +13,9 @@ class htmlElements implements IHtmlElement {
     constructor(element: object) {
         this.element = element;
     }
+
     element: object;
+
     doElement(): object {
         return this.element
     }
@@ -52,11 +53,10 @@ const elemInput: IHtmlElement = getElementByType(elementType.input);
 class App extends React.Component {
     state = {
         currentPath: 'undefined',
-        htmlElement: elemTextArea.doElement(),
-        x: false
+        htmlElement: elemTextArea.doElement()
     };
 
-    handleClick = (event: IElement): void => {
+    handleClick = (event: any) => {
         this.setState({currentPath: getPath(event.target)});
     };
     handleClickButton = (event: { target: { checked: boolean } }): void => {
