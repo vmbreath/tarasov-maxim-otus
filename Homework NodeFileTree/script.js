@@ -25,7 +25,7 @@ const doJSONTree = (path) => {
                 }
             });
         } catch (someErr) {
-            console.log('ERROR! ' + err); // проверяем на наличие ошиок при чтении файлов
+            console.log('ERROR! ' + err); //Проверяем на наличие ошиок при чтении файлов
         }
     });
 };
