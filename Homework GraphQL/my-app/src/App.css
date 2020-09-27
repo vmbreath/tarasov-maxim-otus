@@ -1,0 +1,38 @@
+.App {
+    text-align: center;
+}
+
+.buyersDiv {
+    display: inline-grid;
+    width: 500px;
+}
+
+.products {
+    background-color: azure;
+    width: 300px;
+}
+
+.buyers {
+    background-color: antiquewhite;
+    width: 300px;
+}
+
+.addProductDiv {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+form {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 400px;
+}
+
+.deleteProduct {
+    background-color: #ff3e00;
+}
+
+.addProduct {
+    background-color: chartreuse;
+}
