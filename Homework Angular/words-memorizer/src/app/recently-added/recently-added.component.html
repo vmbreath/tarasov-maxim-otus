@@ -1,0 +1,34 @@
+<div class="addedWords">
+  <div class="searcher">
+    <div class="group">
+      <input [(ngModel)]="inputText" type="text" on-keyup="getWord($event)" required>
+      <span class="bar"></span>
+      <label>Введите слово на русском</label>
+    </div>
+    <div style="text-align: center;font-size: large">
+      <div (mouseover)="isMouseOver=true" (mouseleave)="isMouseOver=false" (click)="doWords($event,englishTranslation$)"
+           class="translation">
+        <p *ngIf="!englishTranslation$">Перевод будет</p>
+        <p *ngIf="!englishTranslation$">отображаться тут</p>
+        <p *ngIf="englishTranslation$">На английский: {{englishTranslation$ | async}}</p>
+        <p *ngIf="frenchTranslation$">На французский: {{frenchTranslation$ | async}}</p>
+      </div>
+      <div class="addWord" *ngIf="isMouseOver">Нажми, чтобы добавить слово к изучению</div>
+    </div>
+  </div>
+  <ul class="ul">
+    Слова к изучению:
+    <li *ngFor="let word of this.localStorageService.getAllLocalStorage()" (click)="deleteWord($event)" id="{{word.id}}"
+        class="liElement">
+      <div class="wordContainer">
+        <div class="translationWords">
+          <p>Русский: "{{word.wordRussian}}"</p>
+          <p>Английский: "{{word.wordEnglish}}"</p>
+          <p>Французский: "{{word.wordFrancoise}}"</p>
+        </div>
+        <img alt="Нет доступа к картинке" class="miniImage" src="{{word.wordUrl}}">
+      </div>
+    </li>
+  </ul>
+</div>
+

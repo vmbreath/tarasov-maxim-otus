@@ -1,0 +1,34 @@
+.all-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  .setting {
+    //margin: 1%;
+    background: linear-gradient(185.96deg, rgba(255, 255, 255, 0.88) 4.73%, rgba(255, 255, 255, 0) 95.28%), linear-gradient(131.04deg, #CC15EA 26.73%, rgba(255, 255, 255, 0) 73.96%), #F0950C;
+    mix-blend-mode: normal;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 22px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+  }
+
+  .header {
+    width: auto;
+    margin: 1% 0 2% 0;
+    font-size: 28px;
+  }
+
+  input {
+    font-size: 15px;
+  }
+
+  select {
+    font-size: 15px;
+  }
+}

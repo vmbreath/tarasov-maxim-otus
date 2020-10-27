@@ -1,0 +1,55 @@
+<div class="learning-component">
+  <div class="status">
+    <div class="statusWord">Статус</div>
+    <div class="statusMessages">
+      <p>Количество слов для изучения: {{numberOfWords}}</p>
+      <p>Время на упражнение, сек: {{timeForLearning}}</p>
+      <p>Язык: {{language}}</p>
+    </div>
+  </div>
+  <div *ngIf="allDone === false" class="start">
+    <button *ngIf="start === false" (click)="this.doTimer()" class="BUTTON_XKA">Начать упражнение</button>
+    <div>
+      <p *ngIf="start === true">Время до конца упражнения: {{this.timeCounter}}</p>
+      <p *ngIf="timeIsUp === true">Время вышло! Начать заново?</p>
+    </div>
+  </div>
+  <div *ngIf="(allDone === false)&&(start === true)" class="learningForm">
+    <div class="learner">
+      <div class="formInput">
+        <label class="labelForm">
+          Введите перевод
+          "{{language === "English" ? this.wordsToLearn[this.currentWordNumber].wordEnglish : this.wordsToLearn[this.currentWordNumber].wordFrancoise}}
+          " на русский:
+          <input on-keyup="currentRussianWord = this.wordsToLearn[this.currentWordNumber].wordRussian" class="css-input"
+                 type="text" [formControl]="name"
+                 placeholder='{{this.translationShowed?this.wordsToLearn[this.currentWordNumber].wordRussian:"Перевод"}}'>
+        </label>
+        <!--    <span *ngIf="name.errors&&name.errors.minlength">-->
+        <!--      Неправильный ответ! Надо {{name.errors.minlength.requiredLength}},-->
+        <!--      а у вас {{name.errors.minlength.actualLength}}-->
+        <!--    </span>-->
+
+        <!--    <span [hidden]="name.valid">-->
+        <!--      {{name.errors | json}}-->
+        <!--    </span>-->
+        <button class="buttonInForm" [hidden]="name.invalid" (click)="nextWord()">Перейти к следующему слову</button>
+        <button class="buttonInForm" [hidden]="!this.translationShowed" (click)="skipWord()">Следующее слово</button>
+        <button class="buttonInForm" [hidden]="name.valid || this.translationShowed"
+                (click)="this.translationShowed=true">Посмотреть перевод
+        </button>
+      </div>
+    </div>
+    <button (click)="hint=hint?hint=false:hint=true" class="BUTTON_XKA showImg">Показать подсказку?</button>
+    <img *ngIf="hint === true" alt="Нет доступа к картинке" class="miniImage"
+         src="{{this.wordsToLearn[this.currentWordNumber].wordUrl}}">
+    <div [hidden]="name.invalid" style="text-align: center">Правильный перевод!</div>
+    <div [hidden]="!this.translationShowed" style="text-align: center">Правильный перевод:
+      "{{this.wordsToLearn[this.currentWordNumber].wordRussian}}"
+    </div>
+  </div>
+
+  <div *ngIf="allDone === true" class="done">
+    <img src="../../assets/img/done.jpg" alt="">
+  </div>
+</div>
