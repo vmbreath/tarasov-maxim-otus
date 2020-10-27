@@ -1,16 +1,26 @@
 const fs = require('fs');
-const arrayNumbers = [];
+let stringLineNumbers = '';
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
+const data = fs.createWriteStream(`numbersByLines.txt`)
+let numbersInLine = 0;
 for (let i = 0; i < 9650000 / 4; i++) {
-    arrayNumbers.push(getRandomInt(10000000000));
+    stringLineNumbers += getRandomInt(10000000000) + ' ';
+    numbersInLine++;
+    if (numbersInLine === 20) {
+        data.write(stringLineNumbers + '\r\n');
+        stringLineNumbers = '';
+        numbersInLine = 0;
+    }
 }
+data.end();
 
-fs.writeFile('numbers1.txt', arrayNumbers.join(' '), (err) => {
-    if (err) throw err;
-    console.log('The file has been saved!');
-});
+
+
+
+
+
 

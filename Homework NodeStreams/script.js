@@ -1,100 +1,75 @@
 const fs = require('fs');
-const options = {
-    encoding: 'utf8',
-    highWaterMark: 1024 * 20
-};
+const readline = require('readline');
+
 //Создаю потоки для чтения файлов и поток для записи
 const writeStream = fs.createWriteStream('./result.txt');
-const stream1 = fs.createReadStream('./numbers1.txt', options);
-const stream2 = fs.createReadStream('./numbers2.txt', options);
-const stream3 = fs.createReadStream('./numbers3.txt', options);
-const stream4 = fs.createReadStream('./numbers4.txt', options);
-
-let corruptedNumber = 0;//При чтении node разбивает числа в начале и в конце буфера, так что пришлось их "склеивать"
+const readInterface = readline.createInterface({
+    input: fs.createReadStream('numbers1.txt'),
+    output: process.stdout,
+    console: false
+})
+const readInterface2 = readline.createInterface({
+    input: fs.createReadStream('numbers2.txt'),
+    output: process.stdout,
+    console: false
+})
+const readInterface3 = readline.createInterface({
+    input: fs.createReadStream('numbers3.txt'),
+    output: process.stdout,
+    console: false
+})
+const readInterface4 = readline.createInterface({
+    input: fs.createReadStream('numbers4.txt'),
+    output: process.stdout,
+    console: false
+})
 let minimumNumber = 9999999999;
-//Запускаю чтение из 1 файла
-stream1.on('data', (chunk) => {
-    stream1.pause();
-    const arrBuffer = chunk.split(' ');
-    if (+(arrBuffer[0] + corruptedNumber) < minimumNumber) {
-        minimumNumber = +arrBuffer[0] + corruptedNumber
-    }
-    for (let i = 1; i < arrBuffer.length - 2; i++) {
+readInterface.on('line', function (line) {
+    readInterface.pause();
+    const arrBuffer = line.split(' ');
+    for (let i = 0; i < arrBuffer.length - 1; i++) {
         if (+arrBuffer[i] < minimumNumber) {
             minimumNumber = +arrBuffer[i]
         }
     }
     console.log("Minimum", minimumNumber);
-    corruptedNumber = arrBuffer[arrBuffer.length - 1];
     writeStream.write(String(minimumNumber) + ',');
-    stream1.resume();
+    readInterface.resume();
 });
-
-stream1.on('close', () => {
-    console.log('file numbers1.txt closed');
-    corruptedNumber = 0;
-    //Запускаю чтение из 2 файла
-    stream2.on('data', (chunk) => {
-        stream2.pause();
-        const arrBuffer = chunk.split(' ');
-        if (+(arrBuffer[0] + corruptedNumber) < minimumNumber) {
-            minimumNumber = +arrBuffer[0] + corruptedNumber
+readInterface2.on('line', function (line) {
+    readInterface2.pause();
+    const arrBuffer = line.split(' ');
+    for (let i = 0; i < arrBuffer.length - 1; i++) {
+        if (+arrBuffer[i] < minimumNumber) {
+            minimumNumber = +arrBuffer[i]
         }
-        for (let i = 1; i < arrBuffer.length - 2; i++) {
-            if (+arrBuffer[i] < minimumNumber) {
-                minimumNumber = +arrBuffer[i]
-            }
-        }
-        console.log("Minimum2", minimumNumber);
-        corruptedNumber = arrBuffer[arrBuffer.length - 1];
-        writeStream.write(String(minimumNumber) + ',');
-        stream2.resume();
-    });
-    stream2.on('close', () => {
-        console.log('file numbers2.txt closed');
-        corruptedNumber = 0;
-        //Запускаю чтение из 3 файла
-        stream3.on('data', (chunk) => {
-            stream3.pause();
-            const arrBuffer = chunk.split(' ');
-            if (+(arrBuffer[0] + corruptedNumber) < minimumNumber) {
-                minimumNumber = +arrBuffer[0] + corruptedNumber
-            }
-            for (let i = 1; i < arrBuffer.length - 2; i++) {
-                if (+arrBuffer[i] < minimumNumber) {
-                    minimumNumber = +arrBuffer[i]
-                }
-            }
-            console.log("Minimum3", minimumNumber);
-            corruptedNumber = arrBuffer[arrBuffer.length - 1];
-            writeStream.write(String(minimumNumber) + ',');
-            stream3.resume();
-        });
-        stream3.on('close', () => {
-            console.log('file numbers3.txt closed');
-            corruptedNumber = 0;
-            //Запускаю чтение из 4 файла
-            stream4.on('data', (chunk) => {
-                stream4.pause();
-                const arrBuffer = chunk.split(' ');
-                if (+(arrBuffer[0] + corruptedNumber) < minimumNumber) {
-                    minimumNumber = +arrBuffer[0] + corruptedNumber
-                }
-                for (let i = 1; i < arrBuffer.length - 2; i++) {
-                    if (+arrBuffer[i] < minimumNumber) {
-                        minimumNumber = +arrBuffer[i]
-                    }
-                }
-                console.log("Minimum4", minimumNumber);
-                corruptedNumber = arrBuffer[arrBuffer.length - 1];
-                writeStream.write(String(minimumNumber) + ',');
-                stream4.resume();
-            });
-            stream4.on('close', () => {
-                console.log('file numbers4.txt closed');
-            });
-        });
-    });
+    }
+    console.log("Minimum", minimumNumber);
+    writeStream.write(String(minimumNumber) + ',');
+    readInterface2.resume();
 });
-
+readInterface3.on('line', function (line) {
+    readInterface3.pause();
+    const arrBuffer = line.split(' ');
+    for (let i = 0; i < arrBuffer.length - 1; i++) {
+        if (+arrBuffer[i] < minimumNumber) {
+            minimumNumber = +arrBuffer[i]
+        }
+    }
+    console.log("Minimum", minimumNumber);
+    writeStream.write(String(minimumNumber) + ',');
+    readInterface3.resume();
+});
+readInterface4.on('line', function (line) {
+    readInterface4.pause();
+    const arrBuffer = line.split(' ');
+    for (let i = 0; i < arrBuffer.length - 1; i++) {
+        if (+arrBuffer[i] < minimumNumber) {
+            minimumNumber = +arrBuffer[i]
+        }
+    }
+    console.log("Minimum", minimumNumber);
+    writeStream.write(String(minimumNumber) + ',');
+    readInterface4.resume();
+});
 
