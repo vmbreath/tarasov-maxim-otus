@@ -1,0 +1,23 @@
+<div class="all-settings">
+  <div class="setting header">
+    Настройки
+  </div>
+  <div class="setting">
+    Количество слов для изучения:
+    <input [(ngModel)]="inputNumberWords" on-change="setWordsNumber()" type="number" min="2" max="20"
+           title="Введите число от 1 до 20">
+  </div>
+  <div class="setting">
+    Время на изучение каждого слова, секунды:
+    <input [(ngModel)]="inputTimeForWord" on-change="setTimeForWord()" type="number" min="5" max="60"
+           title="Введите число от 5 до 60">
+  </div>
+  <div class="setting">
+    Язык для изучения:
+    <select [(ngModel)]="inputLanguage" on-change="setLanguage()">
+      <option value="hide">--Language--</option>
+      <option value="English">English</option>
+      <option value="Français">Français</option>
+    </select>
+  </div>
+</div>

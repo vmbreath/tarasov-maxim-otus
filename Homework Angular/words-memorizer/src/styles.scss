@@ -1,0 +1,65 @@
+@import url(https://fonts.googleapis.com/css?family=Lora);
+
+body {
+  background-image: url(./assets/img/white-wood.jpg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @media (max-width: 1200px) {
+    max-width: 970px;
+  }
+  @media (max-width: 992px) {
+    max-width: 750px;
+  }
+  @media (max-width: 767px) {
+    max-width: none;
+  }
+}
+
+.menu-main {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  display: flex;
+
+}
+
+li {
+  margin-bottom: 1px;
+  width: fit-content;
+  height: fit-content;
+  background-color: #ffffff;
+  border: 2px solid #D4D4D4;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #0099FF;
+  padding: 2px 4px;
+}
+
+
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0 auto;
+  border: 2px solid #D4D4D4;
+  border-radius: 1px;
+  box-shadow: 0 0 5px #A9A9A9;
+  padding: 2px 4px;
+  background: rgb(214, 246, 18);
+  background: linear-gradient(90deg, rgba(214, 246, 18, 1) 0%, rgba(235, 24, 230, 0.5217437316723564) 33%, rgba(17, 223, 231, 1) 63%, rgba(255, 252, 0, 1) 100%);
+}
+
+a {
+  text-decoration: none;
+  font-family: 'Lora', serif;
+  transition: .5s linear;
+}
+
+
+
+
