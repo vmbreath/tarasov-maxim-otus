@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChosenTown renders exactly 1`] = `
+<div
+  className="listContainer"
+>
+  <div
+    className="deleteLi"
+    onClick={[Function]}
+  />
+  <div
+    className="liElem"
+    data-tooltip="Выбрать?"
+    onClick={[Function]}
+  >
+    <h3>
+      Москва
+    </h3>
+  </div>
+</div>
+`;

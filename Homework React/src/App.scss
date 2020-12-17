@@ -1,8 +1,271 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta:700');
+
+$bg: #f3f8fa;
+$white: #fff;
+$black: #282936;
+
+.mainH1 {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65,0,.076,1)) {
+  transition: $property $duration $ease;
+}
+
+* {
+  box-sizing: border-box;
+
+  &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+
 h1 {
   color: #1E62D0;
   text-align: center;
 }
 
 .main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @media (max-width: 1200px) {
+    max-width: 970px;
+  }
+  @media (max-width: 992px) {
+    max-width: 750px;
+  }
+  @media (max-width: 767px) {
+    max-width: none;
+  }
   display: flex;
+  flex-direction: row;
+
+  .forecast-form {
+    min-width: 60vw;
+
+    .inputTown {
+      flex-direction: row;
+      font-family: 'Mukta', sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      background: $bg;
+
+      p {
+        padding: 1%;
+        background-color: #96d1f8;
+        border: #050405 solid;
+
+        input {
+          font-size: large;
+        }
+      }
+
+      button {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        border: 0;
+        vertical-align: middle;
+        text-decoration: none;
+        background: transparent;
+        padding: 0;
+        font-size: inherit;
+        font-family: inherit;
+        margin-left: 2vw;
+
+        &.learn-more {
+          width: 18rem;
+          height: auto;
+
+          .circle {
+            @include transition(all, 0.45s, cubic-bezier(0.65, 0, .076, 1));
+            position: relative;
+            display: block;
+            margin: 0;
+            width: 3rem;
+            height: 3rem;
+            background: $black;
+            border-radius: 1.625rem;
+
+            .icon {
+              @include transition(all, 0.45s, cubic-bezier(0.65, 0, .076, 1));
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              margin: auto;
+              background: $white;
+
+              &.arrow {
+                @include transition(all, 0.45s, cubic-bezier(0.65, 0, .076, 1));
+                left: 0.625rem;
+                width: 1.125rem;
+                height: 0.125rem;
+                background: none;
+
+                &::before {
+                  position: absolute;
+                  content: '';
+                  top: -0.25rem;
+                  right: 0.0625rem;
+                  width: 0.625rem;
+                  height: 0.625rem;
+                  border-top: 0.125rem solid #fff;
+                  border-right: 0.125rem solid #fff;
+                  transform: rotate(45deg);
+                }
+              }
+            }
+          }
+
+          .button-text {
+            @include transition(all, 0.45s, cubic-bezier(0.65, 0, .076, 1));
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0.75rem 0;
+            margin: 0 0 0 1.85rem;
+            color: $black;
+            font-weight: 700;
+            line-height: 1.6;
+            text-align: center;
+            text-transform: uppercase;
+          }
+        }
+
+        &:hover {
+          .circle {
+            width: 100%;
+
+            .icon {
+              &.arrow {
+                background: $white;
+                transform: translate(1rem, 0);
+              }
+            }
+          }
+
+          .button-text {
+            color: $white;
+          }
+        }
+      }
+
+      @supports (display: grid) {
+        body {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-gap: 0.625rem;
+          grid-template-areas: ". main main ." ". main main .";
+        }
+
+        #container {
+          grid-area: main;
+          align-self: center;
+          justify-self: center;
+        }
+      }
+
+    }
+
+    .addTown {
+      background-color: azure;
+      border: 2px solid #1f0c06;
+      text-align: center;
+      margin-bottom: 5px;
+      height: 5vh;
+
+      h2 {
+        margin: 1px;
+      }
+    }
+
+    .addTown::after {
+      content: attr(data-tooltip);
+      position: relative; /* Абсолютное позиционирование */
+      left: 0;
+      top: 0; /* Положение подсказки */
+      background: #3989c9; /* Синий цвет фона */
+      color: #fff; /* Цвет текста */
+      padding: 0.5em; /* Поля вокруг текста */
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+      pointer-events: none; /* Подсказка */
+      opacity: 0; /* Подсказка невидима */
+      transition: 1s; /* Время появления подсказки */
+      z-index: 1;
+    }
+
+    .addTown:hover::after {
+      opacity: 1; /* Показываем подсказку */
+      top: 2em; /* Положение подсказки */
+    }
+
+    .addTown:hover {
+      border: 2px solid #15ec06;
+      cursor: pointer;
+    }
+
+    .addTown:active {
+      background-color: lawngreen;
+    }
+  }
+}
+
+.best-cities {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-width: 20vw;
+  border: 2px dashed #1f0c06;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), #ECD4D4;
+  border-radius: 30px;
+  margin-left: 2vw;
+  max-height: 80vh;
+
+  h2 {
+    background-color: papayawhip;
+    border: 2px solid #1f0c06;
+  }
+
+  .container {
+    user-select: none;
+    margin: 2px;
+  }
+}
+
+.fiveDays {
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .link {
+    margin: 0 2vw 0 2vw;
+    font-size: large;
+    text-decoration: none;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #56d53a, #d53a9d);
+  }
+
+  .link:hover {
+    cursor: pointer;
+    user-select: none;
+    border-image-source: linear-gradient(to right, #3ad59f, #56d53a, #f6d22b);
+  }
 }
