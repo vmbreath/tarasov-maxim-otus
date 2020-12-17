@@ -1,9 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {loadState} from './localStorage'
 
-export const initialState = {
+const persistedState = loadState('reducer');
+
+export const initialState = persistedState ? persistedState.state.weather : ({
     response: {list: []},
     fiveDaysForecast: []
-};
+});
+
 
 export const currentWeather = createSlice({
     name: 'weather',

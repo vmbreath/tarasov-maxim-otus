@@ -7,5 +7,5 @@ export default configureStore({
     weather: searchWeatherReducer,
     towns: townsReducer,
   },
-
 });
+

@@ -1,9 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {loadState} from './localStorage'
 
-export const initialState = {
+const persistedState = loadState('reducer');
+
+export const initialState = persistedState ? persistedState.state.towns : ({
     town: 'Москва',
     towns: ['Москва'],
-};
+});
 
 export const currentTowns = createSlice({
     name: 'towns',
