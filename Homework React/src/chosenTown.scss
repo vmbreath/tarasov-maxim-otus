@@ -1,0 +1,111 @@
+.listContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 2px;
+
+  .deleteLi {
+    margin-right: 0.5vw;
+    margin-top: 0;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+    transition: all .5s;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:before {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      content: "";
+      display: block;
+      height: 2px;
+      background: black;
+      transition: all .5s;
+    }
+
+    &:after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      content: "";
+      display: block;
+      height: 2px;
+      background: black;
+      transition: transform .5s, width 2s;
+    }
+
+    &:hover, &:active, &.active {
+      border: 0;
+
+      &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        transform: rotate(45deg);
+        background: red;
+        top: 100%;
+        margin-top: -55%;
+        left: 0;
+        margin-left: -0%;
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        width: 100%;
+        transform: rotate(-45deg);
+        background: red;
+        top: 100%;
+        margin-top: -55%;
+        left: 0;
+        margin-left: 0%;
+      }
+    }
+  }
+}
+
+
+.liElem {
+  background-color: #96d1f8;
+  border: 2px solid #1f0c06;
+  height: 4vh;
+  text-align: center;
+
+  h3 {
+    font-size: large;
+    text-align: center;
+    margin: 1px;
+  }
+}
+
+.liElem::after {
+  content: attr(data-tooltip);
+  position: relative; /* Абсолютное позиционирование */
+  left: 0;
+  top: 0; /* Положение подсказки */
+  background: #3989c9; /* Синий цвет фона */
+  color: #fff; /* Цвет текста */
+  padding: 0.5em; /* Поля вокруг текста */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+  pointer-events: none; /* Подсказка */
+  opacity: 0; /* Подсказка невидима */
+  transition: 1s; /* Время появления подсказки */
+  z-index: 1;
+}
+
+.liElem:hover::after {
+  opacity: 1; /* Показываем подсказку */
+  top: 1em; /* Положение подсказки */
+  left: 1em;
+}
+
+.liElem:hover {
+  border: 2px solid #ff3e00;
+  cursor: pointer;
+}

@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DayForecast renders exactly 1`] = `
+<div
+  className="css-z7ntyl-container"
+>
+  <h3
+    className="css-1j4cfgk-style"
+  >
+    Прогноз на 
+    0.0.0
+  </h3>
+  <p>
+    Город: 
+    Москва
+     
+  </p>
+  <p>
+    Чувствуется как: 
+    666
+     °C
+  </p>
+  <p>
+    Температура: 
+    666
+     °C
+  </p>
+  <p>
+    Объем дождя за последние 3 часа: 
+    666
+     мм
+  </p>
+  <p>
+    Объем снега за последние 3 часа: 
+    666
+     мм
+  </p>
+  <p>
+    Ясно
+  </p>
+  <img
+    src="http://openweathermap.org/img/w/01n.png"
+  />
+  <p>
+    Скорость ветра: 
+    666
+     м/с
+  </p>
+</div>
+`;
+
+exports[`Renders exactly 1`] = `
+<div
+  className="css-z7ntyl-container"
+>
+  <h3
+    className="css-1j4cfgk-style"
+  >
+    Прогноз на 
+    0.0.0
+  </h3>
+  <p>
+    Город: 
+    Москва
+     
+  </p>
+  <p>
+    Чувствуется как: 
+    666
+     °C
+  </p>
+  <p>
+    Температура: 
+    666
+     °C
+  </p>
+  <p>
+    Объем дождя за последние 3 часа: 
+    666
+     мм
+  </p>
+  <p>
+    Объем снега за последние 3 часа: 
+    666
+     мм
+  </p>
+  <p>
+    Ясно
+  </p>
+  <img
+    src="http://openweathermap.org/img/w/01n.png"
+  />
+  <p>
+    Скорость ветра: 
+    666
+     м/с
+  </p>
+</div>
+`;

@@ -10,9 +10,13 @@
   },
   "files": [
     "./src/App.tsx",
-    "./src/index"
+    "./src/index.tsx"
   ],
   "exclude": [
     "node_modules"
+  ],
+  "types": [
+    "node",
+    "@emotion/core"
   ]
 }
